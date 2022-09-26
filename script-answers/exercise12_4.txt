@@ -1,0 +1,10 @@
+Script started on 2022-09-26 09:16:10+03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="203" LINES="17"]
+]0;ville@DESKTOP-RFFF5Q5: /mnt/c/Users/Ville/Desktop/part12-containers-applications[01;32mville@DESKTOP-RFFF5Q5[00m:[01;34m/mnt/c/Users/Ville/Desktop/part12-containers-applications[00m$ exitnode /usr/src/app/index.jsexit[Kdocker start -i confident_jennings
+[?2004h]0;root@d86c06057f0f: /root@d86c06057f0f:/# [K]0;root@d86c06057f0f: /root@d86c06057f0f:/# exitnode /usr/src/app/index.js
+[?2004lHello World
+[?2004h]0;root@d86c06057f0f: /root@d86c06057f0f:/# [Kexit
+[?2004lexit
+]0;ville@DESKTOP-RFFF5Q5: /mnt/c/Users/Ville/Desktop/part12-containers-applications[01;32mville@DESKTOP-RFFF5Q5[00m:[01;34m/mnt/c/Users/Ville/Desktop/part12-containers-applications[00m$ exit
+exit
+
+Script done on 2022-09-26 09:16:26+03:00 [COMMAND_EXIT_CODE="0"]
