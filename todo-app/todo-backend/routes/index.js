@@ -5,6 +5,7 @@ const configs = require('../util/config')
 const redis = require('../redis')
 
 let visits = 0
+redis.setAsync('added_todos', 0)
 
 /* GET index data. */
 router.get('/', async (req, res) => {
@@ -14,6 +15,11 @@ router.get('/', async (req, res) => {
     ...configs,
     visits
   });
+});
+
+router.get('/statistics', async (req, res) => {
+  const n = await redis.getAsync('added_todos')
+  res.send({ 'added_todos': Number(n) });
 });
 
 module.exports = router;
