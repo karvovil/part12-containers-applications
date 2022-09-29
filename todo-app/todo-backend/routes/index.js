@@ -5,7 +5,6 @@ const configs = require('../util/config')
 const redis = require('../redis')
 
 let visits = 0
-redis.setAsync('added_todos', 0)
 
 /* GET index data. */
 router.get('/', async (req, res) => {
