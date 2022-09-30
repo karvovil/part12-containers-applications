@@ -1,11 +1,18 @@
-# The first FROM is now a stage called build-stage
+FROM node:16 AS test-stage
+
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN CI=true npm test
+
 FROM node:16 AS build-stage
 
 WORKDIR /usr/src/app
 
 ENV REACT_APP_BACKEND_URL="http://localhost:3000"
 
-COPY . .
+COPY --from=test-stage /usr/src/app /usr/src/app
 
 RUN npm ci
 
