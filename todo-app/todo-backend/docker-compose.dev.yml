@@ -31,7 +31,7 @@ services:
     environment: 
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
-    container_name: todo-back-dev # This will name the container hel
+    container_name: todo-backonly-dev # This will name the container hel
     
 volumes:
   mongo_data:
