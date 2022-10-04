@@ -1,19 +1,29 @@
 version: '3.8'
 
 services:
+  app-back:
+    image: todo-server
+    build:
+      context: ./todo-backend # The context will pick this directory as the "build context"
+      dockerfile: ./todo-backend/Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./todo-backend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+    ports:
+      - '3001:3000'
+    environment: 
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
+    container_name: todo-back-prod
   app-front:
-    image: todo-front-dev
+    image: todo-front
     build:
       context: ./todo-frontend # The context will pick this directory as the "build context"
-      dockerfile: /todo-frontend/dev.Dockerfile # This will simply tell which dockerfile to read
+      dockerfile: /todo-frontend/Dockerfile # This will simply tell which dockerfile to read
     volumes:
       - ./todo-frontend:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
     ports:
-      - 3000:3000
-    environment: 
-      - PORT=80
-      - REACT_APP_BACKEND_URL=http://localhost:8080/api/
-    container_name: todo-front-dev # This will name the container hello-front-dev
+      - 3000:80
+    container_name: todo-front-prod
   debug-helper:
     image: busybox
   nginx:
@@ -44,19 +54,6 @@ services:
     command: ['redis-server', '--appendonly', 'yes'] # Overwrite the CMD
     volumes: # Declare the volume
       - ./todo-backend/redis_data:/data
-  app-back:
-    image: todo-back-dev
-    build:
-      context: ./todo-backend # The context will pick this directory as the "build context"
-      dockerfile: ./todo-backend/dev.Dockerfile # This will simply tell which dockerfile to read
-    volumes:
-      - ./todo-backend/:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
-    ports:
-      - 3001:3000
-    environment: 
-      - REDIS_URL=redis://redis:6379
-      - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
-    container_name: todo-back-dev # This will name the container hel
-    
+      
 volumes:
   mongo_data:
