@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  server:
+    image: myapp-back-dev
+    build:
+      context: . # The context will pick this directory as the "build context"
+      dockerfile: ./server/dev.Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./server:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+    ports:
+      - 3001:3000
+    container_name: myapp-back-dev-container # This will name the container hel
+  client:
+    image: myapp-front-dev
+    build:
+      context: . # The context will pick this directory as the "build context"
+      dockerfile: ./client/dev.Dockerfile # This will simply tell which dockerfile to read
+    volumes:
+      - ./client:/usr/src/app # The path can be relative, so ./ is enough to say "the same location as the docker-compose.yml"
+    ports:
+      - 3000:3000
+    container_name: myapp-front-dev-container # This will name the container hello-front-dev
+
+
+    
